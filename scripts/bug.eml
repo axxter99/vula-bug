@@ -1,0 +1,205 @@
+from: "Sakai" <no-reply@localhost> 
+to:  
+subject: Bug Report: 499ED90AAE07FDBDC0BA463303C4EB8718610261 / c797b56c-46ef-4264-9a2d-433b83e2754c 
+headerTo:  
+replyTo: null 
+content:
+
+bug-id: 6549f0bd-88c3-442a-a4c1-3f07ae8ba84b
+user: dhorwitz (David Horwitz)
+email: dhorwitz@gmail.com
+usage-session: c797b56c-46ef-4264-9a2d-433b83e2754c
+stack-trace-digest: 499ED90AAE07FDBDC0BA463303C4EB8718610261
+sakai-version: 19-SNAPSHOT
+service-version: 99e3e0fe
+app-server: localhost
+user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+browser-id: Lin-Mozilla
+IP: 0:0:0:0:0:0:0:1
+request-path: /portal/presence/DAC-EDUCATION-DEPT1-SUBJ1-101
+time: 12-Jul-2018 19:30:31
+
+
+stack trace:
+
+org.sakaiproject.portal.api.PortalHandlerException: org.sakaiproject.tool.api.ToolException: javax.servlet.ServletException: Servlet execution threw an exception
+    at org.sakaiproject.portal.charon.SkinnableCharonPortal.doGet(SkinnableCharonPortal.java:857)
+caused by: org.sakaiproject.tool.api.ToolException: javax.servlet.ServletException: Servlet execution threw an exception
+    at org.sakaiproject.portal.charon.SkinnableCharonPortal.forwardTool(SkinnableCharonPortal.java:1488)
+caused by: javax.servlet.ServletException: Servlet execution threw an exception
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+caused by: java.lang.NoClassDefFoundError: org/sakaiproject/courier/api/ObservingCourier
+    at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+caused by: java.lang.ClassNotFoundException: org.sakaiproject.courier.api.ObservingCourier
+    at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1309)
+    at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1137)
+    at java.lang.ClassLoader.defineClass1(Native Method)
+    at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+    at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+    at org.apache.catalina.loader.WebappClassLoaderBase.findClassInternal(WebappClassLoaderBase.java:2339)
+    at org.apache.catalina.loader.WebappClassLoaderBase.findClass(WebappClassLoaderBase.java:829)
+    at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1278)
+    at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1137)
+    at java.lang.ClassLoader.defineClass1(Native Method)
+    at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+    at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+    at org.apache.catalina.loader.WebappClassLoaderBase.findClassInternal(WebappClassLoaderBase.java:2339)
+    at org.apache.catalina.loader.WebappClassLoaderBase.findClass(WebappClassLoaderBase.java:829)
+    at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1278)
+    at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1137)
+    at java.lang.ClassLoader.defineClass1(Native Method)
+    at java.lang.ClassLoader.defineClass(ClassLoader.java:763)
+    at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)
+    at org.apache.catalina.loader.WebappClassLoaderBase.findClassInternal(WebappClassLoaderBase.java:2339)
+    at org.apache.catalina.loader.WebappClassLoaderBase.findClass(WebappClassLoaderBase.java:829)
+    at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1278)
+    at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1137)
+    at org.sakaiproject.presence.tool.PresenceTool.doGet(PresenceTool.java:121)
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.sakaiproject.util.RequestFilter.doFilter(RequestFilter.java:426)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+    at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:470)
+    at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:356)
+    at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:316)
+    at org.sakaiproject.tool.impl.ActiveToolComponent$MyActiveTool.forward(ActiveToolComponent.java:513)
+    at org.sakaiproject.portal.charon.SkinnableCharonPortal.forwardTool(SkinnableCharonPortal.java:1488)
+    at org.sakaiproject.portal.charon.handlers.PresenceHandler.doPresence(PresenceHandler.java:133)
+    at org.sakaiproject.portal.charon.handlers.PresenceHandler.doGet(PresenceHandler.java:69)
+    at org.sakaiproject.portal.charon.SkinnableCharonPortal.doGet(SkinnableCharonPortal.java:857)
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+    at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.sakaiproject.util.RequestFilter.doFilter(RequestFilter.java:475)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+    at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+    at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+    at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+    at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+    at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:493)
+    at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+    at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+    at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:650)
+    at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+    at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+    at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:800)
+    at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+    at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:800)
+    at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1471)
+    at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+    at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+    at java.lang.Thread.run(Thread.java:748)
+
+
+Tool Placement:
+No Placement
+
+
+Request:
+:    AuthType:null
+:    CharEncoding:UTF-8
+:    ContentLength:-1
+:    ContentType:null
+:    ContextPath:/portal
+:    LocalAddress:0:0:0:0:0:0:0:1
+:    LocalName:localhost
+:    LocalPort:8080
+:    Method:GET
+:    PathInfo:/presence/DAC-EDUCATION-DEPT1-SUBJ1-101
+:    Protocol:HTTP/1.1
+:    QueryString:output_fragment=yes&auto=true&_=1531416628368
+:    RemoteAddress:0:0:0:0:0:0:0:1
+:    RemoteHost:0:0:0:0:0:0:0:1
+:    RemotePort:41064
+:    Requested URL:http://localhost:8080/portal/presence/DAC-EDUCATION-DEPT1-SUBJ1-101
+:    Scheme:http
+:    ServerName:localhost
+:    Headers:
+:        Header:host:localhost:8080
+:        Header:connection:keep-alive
+:        Header:accept:*/*
+:        Header:x-requested-with:XMLHttpRequest
+:        Header:user-agent:Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+:        Header:referer:http://localhost:8080/portal/site/DAC-EDUCATION-DEPT1-SUBJ1-101/tool/d542f4e3-9bad-4b88-ba91-89b84141f0e2
+:        Header:accept-encoding:gzip, deflate, br
+:        Header:accept-language:en-ZA,en;q=0.9,en-GB;q=0.8,en-US;q=0.7
+:        Header:cookie:---censored---
+:    Parameters:
+:        Parameter:output_fragment:0:yes
+:        Parameter:auto:0:true
+:        Parameter:_:0:1531416628368
+:    Attributes:
+:        Attribute:sakai.character.encoding.done:sakai.character.encoding.done
+:        Attribute:sakai.html.head.lang:en
+:        Attribute:sakai.session:MyS_dhorwitz{7208c96c-50cc-493b-be8f-dc67f831a2ce, userId='81d4fe3b-dcb0-4a9a-afa4-049edeac825a', at=5, ts=1, cs=3, Thu Jul 12 19:29:11 SAST 2018}
+:        Attribute:sakai.html.head.css:<link href="/library/skin/morpheus-default/portal.css?version=99e3e0fe" type="text/css" rel="stylesheet" media="screen, tty, tv, handheld, projection" />
+<link href="/library/skin/tool_base.css?version=99e3e0fe" type="text/css" rel="stylesheet" media="screen, tty, tv, handheld, projection" />
+<link href="/library/skin/morpheus-default/tool.css?version=99e3e0fe" type="text/css" rel="stylesheet" media="screen, tty, tv, handheld, projection" />
+<link href="/library/skin/morpheus-default/print.css?version=99e3e0fe" type="text/css" rel="stylesheet" media="print" />
+
+:        Attribute:sakai.html.head.css.base:<link href="/library/skin/morpheus-default/portal.css?version=99e3e0fe" type="text/css" rel="stylesheet" media="screen, tty, tv, handheld, projection" />
+<link href="/library/skin/tool_base.css?version=99e3e0fe" type="text/css" rel="stylesheet" media="screen, tty, tv, handheld, projection" />
+
+:        Attribute:sakai.html.head:<link href="/library/skin/morpheus-default/portal.css?version=99e3e0fe" type="text/css" rel="stylesheet" media="screen, tty, tv, handheld, projection" />
+<link href="/library/skin/tool_base.css?version=99e3e0fe" type="text/css" rel="stylesheet" media="screen, tty, tv, handheld, projection" />
+<link href="/library/skin/morpheus-default/tool.css?version=99e3e0fe" type="text/css" rel="stylesheet" media="screen, tty, tv, handheld, projection" />
+<link href="/library/skin/morpheus-default/print.css?version=99e3e0fe" type="text/css" rel="stylesheet" media="print" />
+<script type="text/javascript" src="/library/js/headscripts.js?version=99e3e0fe"></script>
+<script type="text/javascript">var sakai = sakai || {}; sakai.editor = sakai.editor || {}; sakai.editor.editors = sakai.editor.editors || {}; sakai.editor.editors.ckeditor = sakai.editor.editors.ckeditor || {}; sakai.locale = sakai.locale || {};
+sakai.locale.userCountry = 'ZA';
+sakai.locale.userLanguage = 'en';
+sakai.locale.userLocale = 'en_ZA';
+sakai.editor.collectionId = '/group/DAC-EDUCATION-DEPT1-SUBJ1-101/';
+sakai.editor.enableResourceSearch = false;
+sakai.editor.contentItemUrl = '/portal/tool/74b7b2b1-18e2-4b91-8b46-97ad9758b189/sakai.basiclti.admin.helper.helper?panel=CKEditor';
+sakai.editor.siteToolSkin = '/library/skin/morpheus-default/tool.css';
+sakai.editor.sitePrintSkin = '/library/skin/morpheus-default/print.css';
+sakai.editor.editors.ckeditor.browser = 'elfinder';
+</script>
+<script type="text/javascript">var CKEDITOR_BASEPATH='/library/webjars/ckeditor/4.9.2/full/';
+</script>
+<script type="text/javascript" src="/library/webjars/ckeditor/4.9.2/full/ckeditor.js?version=99e3e0fe"></script>
+<script type="text/javascript" src="/library/editor/ckeditor.launch.js?version=99e3e0fe"></script>
+
+:        Attribute:sakai.html.head.css.skin:<link href="/library/skin/morpheus-default/tool.css?version=99e3e0fe" type="text/css" rel="stylesheet" media="screen, tty, tv, handheld, projection" />
+<link href="/library/skin/morpheus-default/print.css?version=99e3e0fe" type="text/css" rel="stylesheet" media="print" />
+
+:        Attribute:tool.url.manager:org.sakaiproject.portal.util.ToolURLManagerImpl@45a7ac6e
+:        Attribute:sakai.html.body.onload:setMainFrameHeight('MainDACxEDUCATIONxDEPT1xSUBJ1x101xpresence');setFocus(focus_path);
+:        Attribute:sakai.html.head.js:<script type="text/javascript" src="/library/js/headscripts.js?version=99e3e0fe"></script>
+<script type="text/javascript">var sakai = sakai || {}; sakai.editor = sakai.editor || {}; sakai.editor.editors = sakai.editor.editors || {}; sakai.editor.editors.ckeditor = sakai.editor.editors.ckeditor || {}; sakai.locale = sakai.locale || {};
+sakai.locale.userCountry = 'ZA';
+sakai.locale.userLanguage = 'en';
+sakai.locale.userLocale = 'en_ZA';
+sakai.editor.collectionId = '/group/DAC-EDUCATION-DEPT1-SUBJ1-101/';
+sakai.editor.enableResourceSearch = false;
+sakai.editor.contentItemUrl = '/portal/tool/74b7b2b1-18e2-4b91-8b46-97ad9758b189/sakai.basiclti.admin.helper.helper?panel=CKEditor';
+sakai.editor.siteToolSkin = '/library/skin/morpheus-default/tool.css';
+sakai.editor.sitePrintSkin = '/library/skin/morpheus-default/print.css';
+sakai.editor.editors.ckeditor.browser = 'elfinder';
+</script>
+<script type="text/javascript">var CKEDITOR_BASEPATH='/library/webjars/ckeditor/4.9.2/full/';
+</script>
+<script type="text/javascript" src="/library/webjars/ckeditor/4.9.2/full/ckeditor.js?version=99e3e0fe"></script>
+<script type="text/javascript" src="/library/editor/ckeditor.launch.js?version=99e3e0fe"></script>
+
+:        Attribute:sakai.filtered:sakai.filtered
+Session:
+:    Created:1531416626915
+:    LastAccess:1531416631024
+:    CreationDateAndTime:Thursday 12 July 2018
+:    LastAccessDateAndTime:Thursday 12 July 2018
+:    MaxInactive:1800
+:    Attributes:
+:        Attribute:portalskin:morpheus
+ additionalHeaders: 
+
