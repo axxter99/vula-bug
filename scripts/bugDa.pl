@@ -1,7 +1,7 @@
 #! /usr/bin/perl
 
-my $path = "/home2/dhorwitz/git/vula-bug/scripts/bug";
-do "/home2/dhorwitz/git/vula-bug/scripts/sakaibrowser.pl";
+my $path = "/home/dhorwitz/git/vula-bug/scripts/bug";
+do "/home/dhorwitz/git/vula-bug/scripts/sakaibrowser.pl";
 
 $file=$path;
 open(INFO, $file) or die("Could not open  file.");

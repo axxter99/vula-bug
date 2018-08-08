@@ -2,10 +2,13 @@
 
 use strict;
 use CGI qw/escapeHTML unescapeHTML/;
+
+
 use DBI;
 
-require '/srv/www/vhosts/mrtg/scripts/jira.pl';
-require '/srv/www/vhosts/mrtg/scripts/timestamp.pl';
+my $PATH = "/srv/www/cgi-bin/cgiscripts"; #"/srv/www/vhosts/mrtg/scripts";
+require $PATH.'/jira.pl';
+require $PATH.'/timestamp.pl';
 
 require '/usr/local/sakaiconfig/vula_bugs_auth.pl';
 
@@ -31,12 +34,13 @@ if ($bugid =~ /([0-9]+)/) {
 }
 
 # Bug info
-my $buginfo= $dbh->selectall_hashref("SELECT BUG_ID, TOOL, SITE_ID, BODY, COMMENT FROM SAKAI_BUGS WHERE BUG_ID=$bugid", "BUG_ID");
+my $buginfo= $dbh->selectall_hashref("SELECT BUG_ID, TOOL, SITE_ID, BODY, COMMENT, USER_AGENT_ID FROM SAKAI_BUGS WHERE BUG_ID=$bugid", "BUG_ID");
 
 my $toolid = $buginfo->{$bugid}->{'TOOL'};
 my $bug_body = escapeHTML($buginfo->{$bugid}->{'BODY'});
 my $bug_comment = escapeHTML($buginfo->{$bugid}->{'COMMENT'});
 my $siteid = $buginfo->{$bugid}->{'SITE_ID'};
+my $ua_id = $buginfo->{$bugid}->{'USER_AGENT_ID'};
 
 # Get tool info for placement ID
 my $toolreg = $dbh->selectall_hashref("SELECT REGISTRATION, DESCRIPTION, JIRA_PROJ, JIRA_COMP FROM SAKAI_TOOLS WHERE REGISTRATION='$toolid'", "REGISTRATION");
@@ -66,6 +70,19 @@ if ($bug_comment ne "") {
   $bug_comment = "Comment:<br/>$bug_comment<br/><br>";
 }
 
+my @ua = $dbh->selectrow_array("Select USER_AGENT, SAKAI_BROWSER.BROWSER,SAKAI_BROWSER_VERSION.BROWSER_VERSION, SAKAI_OS.OS, SAKAI_DEVISES.DEVISES 
+from SAKAI_USER_AGENT
+JOIN SAKAI_BROWSER_VERSION ON SAKAI_USER_AGENT.Browser_Version=SAKAI_BROWSER_VERSION.BROWSER_VERSION_ID
+JOIN SAKAI_BROWSER ON SAKAI_USER_AGENT.Browser=SAKAI_BROWSER.BROWSER_ID
+JOIN SAKAI_OS ON SAKAI_USER_AGENT.OS=SAKAI_OS.OS_ID
+JOIN SAKAI_DEVISES ON SAKAI_USER_AGENT.DEVISE= SAKAI_DEVISES.DEVISES_ID
+where USER_AGENT_ID=$ua_id");
+
+my $browser = $ua[1];
+my $browserVersion = $ua[2];
+my $os = $ua[3];
+my $devices = $ua[4];
+
 print $q->header();
 
 print <<HTML;
@@ -88,6 +105,16 @@ print <<HTML;
 <tr>
   <td>Tool</td><td>$tool_link</td>
 </td>
+</tr>
+</tr>
+<tr>
+<td>Browser</td><td>$browser</td>
+</tr><tr>
+<td>Browser Version</td><td>$browserVersion</td>
+</tr><tr>
+<td>Operating System</td><td>$os</td>
+</tr><tr>
+<td>Devices</td><td>$devices</td>
 </tr>
 </table>
 <p>$jira_link</p>
